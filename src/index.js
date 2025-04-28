@@ -1,11 +1,14 @@
 import express from "express";
 import { DatabasePostgress } from "./database_postgress.js";
 import { sql } from "./db.js";
+import { Analytics } from "@vercel/analytics/react"
+import cors from 'cors'
 
 const app = express();
 const database = new DatabasePostgress();
 
 app.use(express.json());
+app.use(cors());
 
 // Listar vídeos
 app.get("/videos", async (req, res) => {
